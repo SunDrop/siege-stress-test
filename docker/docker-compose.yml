@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: ./php
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - ../src:/app
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - '${PROJECT_HOST}:80:80'
+    depends_on:
+      - php
+    links:
+      - php
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ../src:/app
+
+  db:
+    image: mysql:latest
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - '${PROJECT_HOST}:3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+  siege:
+    build:
+      context: ./siege
+
+volumes:
+  db-data: { }
