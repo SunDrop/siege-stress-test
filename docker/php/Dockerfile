@@ -9,6 +9,9 @@ RUN apt-get update  \
     docker-php-ext-configure shmop --enable-shmop; \
     docker-php-ext-install -j "$(nproc)" \
       shmop;
+ \
+    # Redis client
+RUN pecl install redis && rm -rf /tmp/pear && docker-php-ext-enable redis
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

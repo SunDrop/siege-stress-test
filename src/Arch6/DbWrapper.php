@@ -8,6 +8,8 @@ class DbWrapper
 
     private $pdo;
 
+    private static $cache;
+
     public function __construct(string $dsn, string $username, string $password)
     {
         $this->pdo = new \PDO($dsn, $username, $password);
@@ -34,6 +36,6 @@ class DbWrapper
     public function getAll()
     {
         $statement = $this->pdo->query('SELECT * FROM ' . self::TABLE_NAME, \PDO::FETCH_ASSOC);
-        var_dump($statement->fetchAll());
+        return $statement->fetchAll();
     }
 }
