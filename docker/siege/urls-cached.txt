@@ -1,2 +1,1 @@
 http://nginx/get-cache.php
-http://nginx/insert.php

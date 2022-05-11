@@ -8,7 +8,7 @@ class Redis
 
     public const TTL_SEC = 30;
 
-    public const DELTA_MS = 250;
+    public const BETA = 1;
 
     private $redis;
 
@@ -19,7 +19,7 @@ class Redis
 
     public function set($value)
     {
-        $this->redis->set(self::CACHE_KEY, json_encode($value), 'EX', self::TTL_SEC);
+        $this->redis->set(self::CACHE_KEY, $value, 'EX', self::TTL_SEC);
     }
 
     public function get()
@@ -34,11 +34,21 @@ class Redis
 
     public function xfetch()
     {
-        $value = $this->get();
-        $ttl = $this->ttl();
+        $redisValue = $this->get();
+        $info = @unpack('Pdelta/Pexpire/Z*value', $redisValue);
+        $delta = @$info['delta'];
+        $expire = @$info['expire'];
+        $value = @unserialize($info['value']);
 
-        if (!$value || ((time() + self::DELTA_MS) >= time() + ($ttl * 1000))) {
-            return false;
+        if (!$redisValue || time() - $delta * self::BETA * log(rand(0,1)) >= $expire) {
+            $start = time();
+            $db = new DbWrapper($_ENV['DATABASE_URL'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+            $value = $db->getAll();
+            $delta = time() - $start;
+            $expire = time() + self::TTL_SEC;
+            $redisValue = pack('PPZ*', $delta, $expire, serialize($value));
+
+            $this->set($redisValue);
         }
 
         return $value;
