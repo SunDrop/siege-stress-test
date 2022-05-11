@@ -50,6 +50,8 @@ services:
     container_name: ${PROJECT_NAME}_siege
     build:
       context: ./siege
+    volumes:
+      - ./siege:/work
 
 volumes:
   db-data: { }
