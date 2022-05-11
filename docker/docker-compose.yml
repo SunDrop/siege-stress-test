@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   php:
+    container_name: ${PROJECT_NAME}_php
     build:
       context: ./php
     depends_on:
@@ -10,8 +11,17 @@ services:
       - db
     volumes:
       - ../src:/app
+    environment:
+      PROJECT_NAME: ${PROJECT_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
+      DATABASE_URL: ${DATABASE_URL}
 
   nginx:
+    container_name: ${PROJECT_NAME}_nginx
     image: nginx:latest
     ports:
       - '${PROJECT_HOST}:80:80'
@@ -24,11 +34,12 @@ services:
       - ../src:/app
 
   db:
+    container_name: ${PROJECT_NAME}_db
     image: mysql:latest
     volumes:
       - db-data:/var/lib/mysql
     ports:
-      - '${PROJECT_HOST}:3306:3306'
+      - '${PROJECT_HOST}:${DB_PORT}:${DB_PORT}'
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -36,6 +47,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
 
   siege:
+    container_name: ${PROJECT_NAME}_siege
     build:
       context: ./siege
 

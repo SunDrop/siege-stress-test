@@ -1,0 +1,16 @@
+{
+    "name": "arch-6/stress-test",
+    "authors": [
+        {
+            "name": "SlavaKonashkov"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": ""
+        }
+    },
+    "require": {
+        "ext-pdo": "*"
+    }
+}
