@@ -2,7 +2,7 @@
 
 namespace Arch6;
 
-class Redis
+class CacheWrapper
 {
     public const CACHE_KEY = 'arch6';
 
