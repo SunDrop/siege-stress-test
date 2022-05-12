@@ -92,7 +92,7 @@ $ make stest-cache
 | Throughput (MB/sec)  | 19.60           | 17.79           | 21.52           | 11.05            | 
 | Longest transaction  | 8.07            | 17.51           | 26.05           | 57.51            |
 | Shortest transaction | 3.23            | 2.46            | 3.80            | 24.75            | 
-### Probabilistic cache
+### Probabilistic cache (https://en.wikipedia.org/wiki/Cache_stampede)
 | Probabilistic cache  | concurrent = 10 | concurrent = 25 | concurrent = 50 | concurrent = 100 |
 |----------------------|-----------------|-----------------|-----------------|------------------|
 | Availability         | 100%            | 100%            | 100%            | 100%             |
