@@ -79,8 +79,8 @@ $ make stest-no-cache
 ```
 
 ```bash
-# Run tests without cache
-$ make stest-no-cache
+# Run tests with cache
+$ make stest-cache
 ```
 
 ## Tests results
