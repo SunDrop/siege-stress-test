@@ -86,17 +86,23 @@ $ make stest-no-cache
 ## Tests results
 ### Without cache
 | NO cache             | concurrent = 10 | concurrent = 25 | concurrent = 50 | concurrent = 100 |
-|----------------------|----------------| --- | --- | --- |
-| Availability         | 100%           | 100% | 100% | 100% |
-| Response time (secs) | 3.92 | 9.88 | 18.44 | 37.11 |
-| Throughput (MB/sec)  | 23.31 | 22.73 | 21.83 | 15.41 | 
-| Longest transaction  | 9.79 | 13.24 | 24.40 | 58.30 |
-| Shortest transaction | 1.33 | 1.76 | 3.30 | 13.86 | 
+|----------------------|-----------------|-----------------|-----------------|------------------|
+| Availability         | 100%            | 100%            | 100%            | 100%             |
+| Response time (secs) | 4.82            | 12.16           | 18.88           | 43.20            |
+| Throughput (MB/sec)  | 19.60           | 17.79           | 21.52           | 11.05            | 
+| Longest transaction  | 8.07            | 17.51           | 26.05           | 57.51            |
+| Shortest transaction | 3.23            | 2.46            | 3.80            | 24.75            | 
 ### Probabilistic cache
 | Probabilistic cache  | concurrent = 10 | concurrent = 25 | concurrent = 50 | concurrent = 100 |
-|----------------------|----------------| --- | --- | --- |
-| Availability         | 100%           | 100% | 100% | 100% |
-| Response time (secs) | 3.47 | 8.23 | 15.86 | 30.95 |
-| Throughput (MB/sec)  | 27.45 | 27.59 | 25.49 | 14.35 | 
-| Longest transaction  | 6.45 | 12.21 | 21.58 | 60.38 |
-| Shortest transaction | 1.02 | 0.67 | 2.81 | 10.47 | 
+|----------------------|-----------------|-----------------|-----------------|------------------|
+| Availability         | 100%            | 100%            | 100%            | 100%             |
+| Response time (secs) | 4.14            | 8.26            | 14.75           | 29.48            |
+| Throughput (MB/sec)  | 22.79           | 18.68           | 29.17           | 18.84            | 
+| Longest transaction  | 8.55            | 27.86           | 21.07           | 53.42            |
+| Shortest transaction | 1.27            | 0.84            | 3.90            | 8.12             | 
+
+### Monitoring
+![Mysql monitoring](/docs/stest-mysql.png?raw=true "Mysql monitoring")
+![PHP monitoring](/docs/stest-php.png?raw=true "PHP monitoring")
+
+As you can see from the pictures above, when the cache is enabled, we reduce the load on MySQL and increase the load on PHP (on memory and processor), which is expected because of the logic of working with data (cache parsing and analyzing) is now transferred to the application level
