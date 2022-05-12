@@ -51,3 +51,52 @@ It's automatically supported on *nix machine, but for MacOS, you need some addit
 sudo launchctl load /Library/LaunchDaemons/com.docker_127005_alias.plist
 ```
 </details>
+
+# Run tests
+
+## Setup project
+```bash
+# Run containers
+$ make up
+
+# Go inside php container
+$ make php
+
+# Install dependency
+$ composer install
+
+# Run migrations
+$ php setup.php
+
+# Insert ONE value into DB (you can run in many times)
+$ php insert.php
+```
+
+## Run stress tests
+```bash
+# Run tests without cache
+$ make stest-no-cache
+```
+
+```bash
+# Run tests without cache
+$ make stest-no-cache
+```
+
+## Tests results
+### Without cache
+| NO cache             | concurrent = 10 | concurrent = 25 | concurrent = 50 | concurrent = 100 |
+|----------------------|----------------| --- | --- | --- |
+| Availability         | 100%           | 100% | 100% | 100% |
+| Response time (secs) | 3.92 | 9.88 | 18.44 | 37.11 |
+| Throughput (MB/sec)  | 23.31 | 22.73 | 21.83 | 15.41 | 
+| Longest transaction  | 9.79 | 13.24 | 24.40 | 58.30 |
+| Shortest transaction | 1.33 | 1.76 | 3.30 | 13.86 | 
+### Probabilistic cache
+| Probabilistic cache  | concurrent = 10 | concurrent = 25 | concurrent = 50 | concurrent = 100 |
+|----------------------|----------------| --- | --- | --- |
+| Availability         | 100%           | 100% | 100% | 100% |
+| Response time (secs) | 3.47 | 8.23 | 15.86 | 30.95 |
+| Throughput (MB/sec)  | 27.45 | 27.59 | 25.49 | 14.35 | 
+| Longest transaction  | 6.45 | 12.21 | 21.58 | 60.38 |
+| Shortest transaction | 1.02 | 0.67 | 2.81 | 10.47 | 

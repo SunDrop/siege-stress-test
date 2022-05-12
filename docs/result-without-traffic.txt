@@ -1,0 +1,145 @@
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c10 -f /work/urls-not-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			         201,
+	"availability":			      100.00,
+	"elapsed_time":			       59.32,
+	"data_transferred":		        0.00,
+	"response_time":		        2.88,
+	"transaction_rate":		        3.39,
+	"throughput":			        0.00,
+	"concurrency":			        9.75,
+	"successful_transactions":	         201,
+	"failed_transactions":		           0,
+	"longest_transaction":		        8.73,
+	"shortest_transaction":		        0.67
+}
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c25 -f /work/urls-not-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			         236,
+	"availability":			      100.00,
+	"elapsed_time":			       59.99,
+	"data_transferred":		        0.00,
+	"response_time":		        5.96,
+	"transaction_rate":		        3.93,
+	"throughput":			        0.00,
+	"concurrency":			       23.43,
+	"successful_transactions":	         236,
+	"failed_transactions":		           0,
+	"longest_transaction":		        7.60,
+	"shortest_transaction":		        1.78
+}
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c50 -f /work/urls-not-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			          45,
+	"availability":			      100.00,
+	"elapsed_time":			       60.31,
+	"data_transferred":		        0.00,
+	"response_time":		       31.98,
+	"transaction_rate":		        0.75,
+	"throughput":			        0.00,
+	"concurrency":			       23.86,
+	"successful_transactions":	          45,
+	"failed_transactions":		           0,
+	"longest_transaction":		       57.40,
+	"shortest_transaction":		        0.00
+}
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c100 -f /work/urls-not-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			          56,
+	"availability":			      100.00,
+	"elapsed_time":			       59.45,
+	"data_transferred":		        0.00,
+	"response_time":		       42.14,
+	"transaction_rate":		        0.94,
+	"throughput":			        0.00,
+	"concurrency":			       39.69,
+	"successful_transactions":	          56,
+	"failed_transactions":		           0,
+	"longest_transaction":		       58.87,
+	"shortest_transaction":		       21.18
+}
+
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c10 -f /work/urls-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			         242,
+	"availability":			      100.00,
+	"elapsed_time":			       59.99,
+	"data_transferred":		        0.00,
+	"response_time":		        2.42,
+	"transaction_rate":		        4.03,
+	"throughput":			        0.00,
+	"concurrency":			        9.75,
+	"successful_transactions":	         242,
+	"failed_transactions":		           0,
+	"longest_transaction":		       11.95,
+	"shortest_transaction":		        0.52
+}
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c25 -f /work/urls-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			         215,
+	"availability":			      100.00,
+	"elapsed_time":			       59.85,
+	"data_transferred":		        0.00,
+	"response_time":		        6.70,
+	"transaction_rate":		        3.59,
+	"throughput":			        0.00,
+	"concurrency":			       24.07,
+	"successful_transactions":	         215,
+	"failed_transactions":		           0,
+	"longest_transaction":		       15.66,
+	"shortest_transaction":		        0.24
+}
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c50 -f /work/urls-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			         278,
+	"availability":			      100.00,
+	"elapsed_time":			       59.88,
+	"data_transferred":		        0.00,
+	"response_time":		        9.62,
+	"transaction_rate":		        4.64,
+	"throughput":			        0.00,
+	"concurrency":			       44.66,
+	"successful_transactions":	         278,
+	"failed_transactions":		           0,
+	"longest_transaction":		       13.33,
+	"shortest_transaction":		        1.34
+}
+docker-compose --env-file stress-test.env -f docker/docker-compose.yml run siege -b -t60s -c100 -f /work/urls-cached.txt
+Creating docker_siege_run ... done
+New configuration template added to /root/.siege
+Run siege -C to view the current settings in that file
+
+{	"transactions":			         234,
+	"availability":			      100.00,
+	"elapsed_time":			       59.30,
+	"data_transferred":		        0.00,
+	"response_time":		       20.35,
+	"transaction_rate":		        3.95,
+	"throughput":			        0.00,
+	"concurrency":			       80.31,
+	"successful_transactions":	         234,
+	"failed_transactions":		           0,
+	"longest_transaction":		       31.89,
+	"shortest_transaction":		        8.33
+}
